@@ -21,11 +21,16 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-           'name' => ['required', 'string', 'max:255'],
-           'email' => ['required', 'email', 'unique:users,email'],
-           'password' => ['required', 'string', 'min:8'],
-           'confirm-password' => ['required', 'string', 'same:password'],
+            'name'             => ['required', 'string', 'max:255'],
+            'email'            => ['required', 'email', 'unique:users,email'],
+            'password'         => ['required', 'string', 'min:8'],
+            'confirm-password' => ['required', 'string', 'same:password'],
+            'anti-bot'         => ['required', 'string', 'max:255'],
         ]);
+
+        if ($validated['anti-bot'] !== config('anti_bot')) {
+            return redirect()->back()->with('error', 'Please enter a valid anti bot answer!');
+        }
 
         dd($validated);
     }

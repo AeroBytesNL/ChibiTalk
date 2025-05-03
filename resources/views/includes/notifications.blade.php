@@ -12,7 +12,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75M12 16.5h.008v.008H12v-.008ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
           @endif
-          <span class="text-sm capitalize">{{ $type }}! {{ session($type) }}</span>
+          <span class="text-sm">{{ $type }}! {{ session($type) }}</span>
         </div>
         <button onclick="this.closest('.flex').classList.add('hidden')" class="text-gray-400 hover:text-white focus:outline-none">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -24,8 +24,6 @@
   @endif
 @endforeach
 
-
-
 @if ($errors->any())
   <div class="fixed bottom-4 right-4 z-50" id="noti-errors">
     <div class="flex items-center justify-between px-4 py-3 rounded bg-gray-800 border border-gray-700 text-white shadow-lg w-80 hidden">
@@ -33,7 +31,11 @@
         <svg class="w-5 h-5 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75M12 16.5h.008v.008H12v-.008ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
-        <span class="text-sm">Validation errors occurred.</span>
+        <span class="text-sm">
+          @foreach($errors->all() as $error)
+            {{ $error }}
+          @endforeach
+        </span>
       </div>
       <button onclick="this.closest('.flex').classList.add('hidden')" class="text-gray-400 hover:text-white focus:outline-none">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
