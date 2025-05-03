@@ -16,6 +16,7 @@ class Home extends Model
         'id',
         'home_id',
         'name',
+        'description',
         'icon_url',
         'owner_id',
         'created_at',

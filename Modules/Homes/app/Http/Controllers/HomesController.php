@@ -31,12 +31,12 @@ class HomesController extends Controller
 
         try {
             Home::create([
-                'home_id'     => Str::random(10),
+                'id'          => Str::uuid(),
                 'name'        => $validated['name'],
-                'description' => $validated['description'], // TODO: fix description not filling in
+                'description' => $validated['description'],
                 'icon_url'    => $validated['icon_url'] ?? null,
                 'owner_id'    => Auth::id(),
-                'is_public'   => $validated['is_public'] ?? false,
+                'is_public'   => $validated['is_public'] ?? true,
             ]);
 
             // change to home show

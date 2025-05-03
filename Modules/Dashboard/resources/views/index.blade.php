@@ -342,7 +342,7 @@
 
         <div class="mb-4">
           <label for="description" class="block text-sm font-medium text-gray-300">Description</label>
-          <textarea id="description" id="description" name="description" placeholder="Enter description" required
+          <textarea id="description" name="description" placeholder="Enter description" required
                     class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
 
@@ -387,14 +387,15 @@
 
   <script>
     function toggleSwitch() {
+      const checkbox = document.getElementById('is_public');
       const toggleCircle = document.getElementById('toggleCircle');
-      const toggleCheckbox = document.getElementById('is_public');
-      toggleCheckbox.checked = !toggleCheckbox.checked;
 
-      if (toggleCheckbox.checked) {
-        toggleCircle.style.transform = "translateX(100%)";
+      checkbox.checked = !checkbox.checked;
+
+      if (checkbox.checked) {
+        toggleCircle.style.transform = 'translateX(100%)';
       } else {
-        toggleCircle.style.transform = "translateX(0)";
+        toggleCircle.style.transform = 'translateX(0)';
       }
     }
 

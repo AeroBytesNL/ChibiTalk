@@ -12,6 +12,9 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected string $guard_name = 'web';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
