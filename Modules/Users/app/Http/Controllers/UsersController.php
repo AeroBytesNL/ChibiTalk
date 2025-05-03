@@ -5,6 +5,8 @@ namespace Modules\Users\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Users\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailConfirmation;
 
 class UsersController extends Controller
 {
@@ -18,21 +20,35 @@ class UsersController extends Controller
         return view('users::create');
     }
 
+    public function created()
+    {
+        return view('users::created');
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name'             => ['required', 'string', 'max:255'],
+            'username'         => ['required', 'string', 'max:255', 'unique:users'],
             'email'            => ['required', 'email', 'unique:users,email'],
             'password'         => ['required', 'string', 'min:8'],
             'confirm-password' => ['required', 'string', 'same:password'],
-            'anti-bot'         => ['required', 'string', 'max:255'],
         ]);
 
-        if ($validated['anti-bot'] !== config('anti_bot')) {
-            return redirect()->back()->with('error', 'Please enter a valid anti bot answer!');
-        }
+        try {
+            User::create([
+                'name'          => $validated['name'],
+                'username'      => $validated['username'],
+                'email'         => $validated['email'],
+                'password'      => bcrypt($validated['password']),
+            ]);
 
-        dd($validated);
+            Mail::to($validated['email'])->send(new EmailConfirmation($validated['email']));
+
+            return redirect('/users/created');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     public function show($id)

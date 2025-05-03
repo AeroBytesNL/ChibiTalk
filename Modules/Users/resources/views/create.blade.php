@@ -56,12 +56,13 @@
                  class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
-        <!-- Anti-bot -->
+        <!-- Anti-bot
         <div>
           <label for="anti-bot" class="block text-sm font-medium">Anti Bot</label>
           <input type="text" id="anti-bot" name="anti-bot" placeholder="What's 2 + 2?" required
                  class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
+        -->
 
         <!-- Submit Button -->
         <div>

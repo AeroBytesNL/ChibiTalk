@@ -13,5 +13,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::group([], function () {
     Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('users/create', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/users/created', [UsersController::class, 'created'])->name('users.created');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
+});
+
+Route::get('/new-chibi', function () {
+    return view('users::created');
 });

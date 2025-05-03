@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('profile_image_url')->nullable()->after('password');
             $table->enum('role', ['user', 'admin', 'moderator'])->default('user')->after('email');
+            $table->string('username')->nullable()->after('email');
         });
     }
 

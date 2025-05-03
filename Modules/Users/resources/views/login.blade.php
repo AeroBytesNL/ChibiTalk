@@ -40,8 +40,13 @@
       <!-- Form End -->
 
       <p class="text-sm mt-4 text-center">
+        No account? <a href="{{ route('users.create') }}" class="text-blue-400 hover:underline">Create</a>
+      </p>
+
+      <p class="text-sm mt-4 text-center">
         Forgot password? <a href="#" class="text-blue-400 hover:underline">Reset</a>
       </p>
+
     </div>
   </div>
 @stop
