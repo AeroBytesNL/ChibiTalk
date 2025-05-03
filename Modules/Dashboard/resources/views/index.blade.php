@@ -6,6 +6,9 @@
   <div class="flex h-full">
     <!-- Sidebar (Server list) -->
     <div class="w-16 bg-gray-800 flex flex-col items-center py-4 space-y-4">
+      <div class="relative group w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer">
+        <img src="/media/app/ChibiTalk_logo.png" class="w-15 h-15 rounded-full">
+      </div>
 
       <!-- Find Homes -->
       <div class="relative group w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer">
@@ -74,6 +77,7 @@
         Rooms
         <span class="text-white text-lg cursor-pointer hover:animate-bounce">+</span>
       </h2>
+
 
       <ul class="space-y-1">
         <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
