@@ -64,4 +64,26 @@ class UsersController extends Controller
     public function update(Request $request, $id) {}
 
     public function destroy($id) {}
+
+    public function confirmEmail(Request $request)
+    {
+        // Get the email from the query string
+        $email = $request->query('email');
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return redirect('/')->with('error', 'Invalid email address.');
+        }
+
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            $user->update([
+                'email_verified_at' => now(),
+            ]);
+
+            return redirect('/login')->with('success', 'Email confirmed successfully! You can now login.');
+        } else {
+            return redirect('/')->with('error', 'User not found.');
+        }
+    }
 }
