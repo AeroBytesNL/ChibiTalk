@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Discord UI Clone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white h-screen overflow-hidden font-sans">
+
+<div class="flex h-full">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-850 p-6">
+    <h2 class="text-xl font-bold mb-6">Settings</h2>
+    <nav class="space-y-3">
+      <a href="#" class="block px-4 py-2 rounded bg-gray-800 hover:bg-gray-700">Profile</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-gray-700">Privacy & Safety</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-gray-700">Notifications</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-gray-700">Appearance</a>
+      <a href="#" class="block px-4 py-2 rounded hover:bg-gray-700">Connections</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-10 overflow-y-auto">
+    <h1 class="text-2xl font-bold mb-6">My Account</h1>
+
+    <form class="space-y-6 max-w-xl">
+      <!-- Username -->
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Username</label>
+        <input type="text" class="w-full px-4 <py-2 rounded bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" value="User123" />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Email</label>
+        <input type="email" class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" value="user@example.com" />
+      </div>
+
+      <!-- Theme -->
+      <div>
+        <label class="block mb-2 text-sm font-semibold">Theme</label>
+        <select class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option>Dark</option>
+          <option>Light</option>
+          <option>System Default</option>
+        </select>
+      </div>
+
+      <!-- Save Button -->
+      <div>
+        <button type="submit" class="px-6 py-2 bg-indigo-600 rounded hover:bg-indigo-500 transition font-semibold">
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
