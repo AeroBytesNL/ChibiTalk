@@ -1,4 +1,6 @@
 {
     "Homes": true,
-    "Users": true
+    "Users": true,
+    "Dashboard": true,
+    "Settings": true
 }

@@ -13,9 +13,6 @@
   </head>
 
   <body class="bg-gray-900 text-white h-screen overflow-hidden font-sans">
-  <div class="flex items-center justify-center h-full">
     @yield('content')
-  </div>
-
   </body>
 </html>
