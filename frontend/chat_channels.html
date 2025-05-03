@@ -38,7 +38,7 @@
   </div>
 
   <!-- Channel List -->
-  <div class="w-56 bg-gray-850 text-gray-300 p-4">
+  <div class="w-60 bg-gray-850 text-gray-300 p-4 flex flex-col h-full">
     <!-- Current active guild -->
     <div class="flex items-center gap-3 mb-4 p-2 rounded hover:bg-gray-700 cursor-pointer transition-colors duration-200">
       <img src="https://i.pravatar.cc/40?img=1" alt="Server Icon" class="w-8 h-8 rounded-full" />
@@ -49,26 +49,91 @@
     </div>
 
     <!-- Guild channels -->
-    <h2 class="text-white text-sm mb-2">Rooms</h2>
+    <h2 class="text-white text-sm mb-2 ml-2 font-bold">Rooms</h2>
     <ul class="space-y-1">
-      <li class="hover:bg-gray-700 px-2 py-1 rounded"># general</li>
-      <li class="hover:bg-gray-700 px-2 py-1 rounded"># random</li>
-      <li class="hover:bg-gray-700 px-2 py-1 rounded"># help</li>
-    </ul>
-  </div>
+      <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        # general
+        <!-- Hover settings icon -->
+        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
+          <button title="Settings" class="hover:animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+              <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+            </svg>
 
+          </button>
+        </div>
+      </li>
+      <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        # random
+        <!-- Hover settings icon -->
+        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
+          <button title="Settings" class="hover:animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+              <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+            </svg>
+          </button>
+        </div>
+      </li>
+      <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        # help
+        <!-- Hover settings icon -->
+        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
+          <button title="Settings" class="hover:animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+              <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+            </svg>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+
+    <!-- User profile -->
+    <div class="mt-auto p-2 bg-gray-800 rounded-xl flex items-center justify-between ">
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <img src="https://i.pravatar.cc/40?img=1" alt="User Avatar" class="w-8 h-8 rounded-full" />
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-gray-800 rounded-full"></span>
+        </div>
+        <div class="text-sm">
+          <p class="text-white leading-none">User One</p>
+
+          <p class="text-gray-400 text-xs">Online</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-gray-400">
+        <button title="Mute" class="hover:animate-bounce">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+          </svg>
+        </button>
+        <button title="Deafen" class="hover:animate-bounce">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+            <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM18.584 5.106a.75.75 0 0 1 1.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 0 1-1.06-1.06 8.25 8.25 0 0 0 0-11.668.75.75 0 0 1 0-1.06Z" />
+            <path d="M15.932 7.757a.75.75 0 0 1 1.061 0 6 6 0 0 1 0 8.486.75.75 0 0 1-1.06-1.061 4.5 4.5 0 0 0 0-6.364.75.75 0 0 1 0-1.06Z" />
+          </svg>
+        </button>
+        <button title="Settings" class="hover:animate-bounce">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Chat Area -->
   <div class="flex-1 flex flex-col">
     <!-- Top Bar -->
     <div class="h-12 bg-gray-800 flex items-center px-4 border-b border-gray-700 rounded-b">
-      <h3 class="text-white text-sm font-semibold"># general</h3>
+      <h3 class="text-white font-semibold"># general</h3>
+      <p class="text-gray-400 text-xs ms-3">Welcome to the general channel! Feel free to chat here.</p>
     </div>
 
     <!-- Messages -->
     <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-900">
       <!-- Individual message -->
-      <div class="group flex items-start space-x-3 relative">
+      <div class="group flex items-start space-x-3 relative hover:ml-1">
         <!-- PFP -->
         <img src="https://i.pravatar.cc/40?img=1" alt="User1 PFP"
              class="w-10 h-10 rounded-full object-cover" />
@@ -78,6 +143,7 @@
           <div class="flex items-center space-x-2">
             <!-- User name -->
             <span class="font-bold text-blue-400 hover:underline">User one</span>
+            <span class="bg-indigo-600 text-blue-800 text-xs font-medium me-1 px-1 py-0.25 leading-tight rounded-sm dark:bg-blue-900 dark:text-blue-300 text-white">Admin</span>
             <span class="text-xs text-gray-500">Today at 3:45 PM</span>
           </div>
           <!-- Message -->
@@ -112,7 +178,7 @@
       </div>
 
       <!-- Individual message -->
-      <div class="group flex items-start space-x-3 relative">
+      <div class="group flex items-start space-x-3 relative hover:ml-1">
         <!-- PFP -->
         <img src="https://i.pravatar.cc/40?img=3" alt="User1 PFP"
              class="w-10 h-10 rounded-full object-cover" />
@@ -159,9 +225,20 @@
       <input
               type="text"
               placeholder="Message #general"
-              class="w-full bg-gray-700 text-white px-4 py-2 rounded focus:outline-none rounded"
+              class="w-full bg-gray-700 text-white px-4 py-2 rounded focus:outline-none"
       />
+      <!-- Send Button -->
+      <button
+              class="ml-4 p-2 bg-gray-900 text-white rounded-lg hover:bg-indigo-600 transition-colors duration-200"
+              title="Send Message"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+          <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+        </svg>
+
+      </button>
     </div>
+
   </div>
 </div>
 
