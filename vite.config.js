@@ -1,13 +1,51 @@
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite'
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
+import fs from 'fs';
+
+const modulePath = path.resolve(__dirname, 'Modules');
+const modules = fs.existsSync(modulePath)
+    ? fs.readdirSync(modulePath).filter(dir => fs.statSync(path.join(modulePath, dir)).isDirectory())
+    : [];
+
+const moduleAssets = modules.flatMap(module => [
+    `Modules/${module}/resources/assets/js/app.js`,
+    `Modules/${module}/resources/assets/css/app.css`,
+]);
 
 export default defineConfig({
     plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
         tailwindcss(),
+
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.js',
+                ...moduleAssets,
+            ],
+            server: {
+                origin: 'http://127.0.0.1:5173',
+                watch: {
+                    usePolling: true,
+                },
+                hmr: {
+                    host: 'localhost',
+                    protocol: 'ws',
+                },
+            },
+            refresh: [
+                'routes/web.php',
+                'resources/views/**/*.blade.php',
+                'Modules/**/resources/views/**/*.blade.php',
+            ],
+        }),
     ],
+    resolve: {
+        alias: {
+            '@': '/resources',
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+            '~modules': '/Modules',
+        },
+    },
 });

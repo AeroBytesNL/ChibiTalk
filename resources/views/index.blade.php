@@ -23,7 +23,7 @@
       </div>
 
       <div class="flex-1 p-10 overflow-y-auto">
-        <h1 class="text-3xl font-bold mb-6">Discover ChibiTalk</h1>
+        <h1 class="text-3xl font-bold mb-6">Dis1cover ChibiTalk</h1>
         <p class="text-lg mb-8">The ultimate chat platform for gamers, creators, and communities. Get started now and take your communication to the next level!</p>
 
         <div id="features" class="mb-12">
