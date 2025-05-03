@@ -8,15 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('home_id')->constrained('homes')->onDelete('cascade');
-            $table->integer('type');
-            $table->string('content');
-            $table->boolean('read')->default(false);
-            $table->timestamps();
-        });
+//        Schema::create('notifications', function (Blueprint $table) {
+//            $table->id();
+//            $table->uuid('user_id');
+//            $table->uuid('home_id');
+//            $table->integer('type');
+//            $table->string('content');
+//            $table->boolean('read')->default(false);
+//            $table->timestamps();
+//
+//            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+//            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
+//        });
     }
 
     public function down(): void

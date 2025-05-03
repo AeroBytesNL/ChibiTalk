@@ -125,8 +125,7 @@
             <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-gray-800 rounded-full"></span>
           </div>
           <div class="text-sm">
-            <p class="text-white leading-none">User One</p>
-
+            <p class="text-white leading-none">{{ Auth::user()->username }}</p>
             <p class="text-gray-400 text-xs">Online</p>
           </div>
         </div>
@@ -337,14 +336,13 @@
         @csrf
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-300">Home Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter home name"
+          <input type="text" id="name" name="name" placeholder="Enter home name" required
                  class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
-
         <div class="mb-4">
           <label for="description" class="block text-sm font-medium text-gray-300">Description</label>
-          <textarea id="description" name="description" placeholder="Enter description"
+          <textarea id="description" id="description" name="description" placeholder="Enter description" required
                     class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
 

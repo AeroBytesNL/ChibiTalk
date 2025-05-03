@@ -19,6 +19,7 @@
         <div>
           <label for="email" class="block text-sm font-medium">Email Address</label>
           <input type="email" id="email" name="email" placeholder="Enter your email" required
+            value="{{ old('email') }}"
             class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 

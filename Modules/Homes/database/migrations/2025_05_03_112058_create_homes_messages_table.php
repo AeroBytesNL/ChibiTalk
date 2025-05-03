@@ -9,13 +9,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homes_messages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('home_id')->constrained('homes');
-            $table->foreignId('channel_id')->constrained('homes_channels');
-            $table->foreignId('user_id')->constrained('users');
+            $table->uuid('id')->primary();
+            $table->uuid('home_id');
+            $table->uuid('channel_id');
+            $table->uuid('user_id');
             $table->string('content');
             $table->json('attachments')->nullable();
             $table->timestamps();
+
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
+            $table->foreign('channel_id')->references('id')->on('homes_channels')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ class AuthController extends Controller
         ]);
 
         if (!Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-            return back()->withInput()->with('error', 'Verkeerde login!');
+            return back()->withInput()->with('error', 'Wrong email or password!');
         }
 
         return redirect(route('dashboard.index'))->with('success', 'You are now logged in!');

@@ -26,7 +26,7 @@
         <!-- User Name -->
         <div>
           <label for="username" class="block text-sm font-medium">Username</label>
-          <input type="text" id="username" name="username" placeholder="Enter your name" required
+          <input type="text" id="username" name="username" placeholder="Enter your username" required
             value="{{ old('username') }}"
             class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>

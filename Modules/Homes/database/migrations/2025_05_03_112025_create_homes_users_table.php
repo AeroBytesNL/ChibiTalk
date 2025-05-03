@@ -9,12 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homes_users', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('home_id')->constrained('homes')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->uuid('home_id');
+            $table->uuid('user_id');
             $table->string('nickname')->nullable();
             $table->timestamp('joined_at')->useCurrent();
             $table->timestamps();
+
+            $table->primary(['home_id', 'user_id']);
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

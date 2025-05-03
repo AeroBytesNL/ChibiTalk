@@ -9,11 +9,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('home_id');
+            $table->uuid('id')->primary();
             $table->string('name');
+            $table->text('description');
             $table->string('icon_url')->nullable();
-            $table->foreignId('owner_id')->constrained('users');
+            $table->uuid('owner_id');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('is_public')->default(true);
             $table->timestamps();
         });
     }

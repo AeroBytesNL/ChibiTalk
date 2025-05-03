@@ -9,14 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homes_channels', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('home_id')->constrained('homes');
+            $table->uuid('id')->primary();
+            $table->uuid('home_id');
             $table->string('name');
             $table->integer('type');
             $table->integer('position');
             $table->timestamps();
-        });
 
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
+        });
     }
 
     public function down(): void

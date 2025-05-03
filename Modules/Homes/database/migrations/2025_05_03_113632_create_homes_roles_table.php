@@ -9,13 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('homes_roles', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('home_id')->references('id')->on('homes');
+            $table->uuid('id')->primary();
+            $table->uuid('home_id');
             $table->string('name');
             $table->string('color');
             $table->json('permissions');
             $table->integer('position');
             $table->timestamps();
+
+            $table->foreign('home_id')->references('id')->on('homes')->onDelete('cascade');
         });
     }
 
