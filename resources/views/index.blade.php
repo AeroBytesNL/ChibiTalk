@@ -70,7 +70,7 @@
         <div id="sign-up" class="text-center">
           <h2 class="text-3xl font-semibold mb-4">Ready to Get Started?</h2>
           <p class="text-lg mb-6">Join us and enjoy the ChibiTalk experience. Sign up now and start connecting!</p>
-          <a href="#" class="px-6 py-3 bg-indigo-600 rounded hover:bg-indigo-500 transition font-semibold">
+          <a href="{{ route('users.create') }}" class="px-6 py-3 bg-indigo-600 rounded hover:bg-indigo-500 transition font-semibold">
             Sign Up Now
           </a>
         </div>
