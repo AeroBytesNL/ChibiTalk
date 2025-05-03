@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Homes\Models\Home;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class HomesController extends Controller
 {
@@ -30,13 +31,22 @@ class HomesController extends Controller
         ]);
 
         try {
-            Home::create([
-                'id'          => Str::uuid(),
+            $homeId = Str::uuid();
+
+            $home = Home::create([
+                'id'          => $homeId,
                 'name'        => $validated['name'],
                 'description' => $validated['description'],
                 'icon_url'    => $validated['icon_url'] ?? null,
                 'owner_id'    => Auth::id(),
                 'is_public'   => $validated['is_public'] ?? true,
+            ]);
+
+            DB::table('homes_users')->insert([
+                'home_id'     => $homeId,
+                'user_id'     => Auth::id(),
+                'nickname'    => null,
+                'joined_at'   => now(),
             ]);
 
             // change to home show
