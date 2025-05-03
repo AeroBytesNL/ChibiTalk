@@ -14,7 +14,7 @@
         </svg>
         <!-- Hover Label -->
         <div class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 text-sm bg-gray-800 text-white rounded hidden group-hover:block whitespace-nowrap z-10 shadow-lg">
-          Flufffff
+          Find new homes
         </div>
       </div>
 
@@ -57,14 +57,17 @@
 
     <!-- Channel List -->
     <div class="w-60 bg-gray-850 text-gray-300 p-4 flex flex-col h-full">
-      <!-- Current active guild -->
-      <div class="flex items-center gap-3 mb-4 p-2 rounded hover:bg-gray-700 cursor-pointer transition-colors duration-200">
+      <div
+        class="flex items-center gap-3 mb-4 p-2 rounded cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        tabindex="0"
+      >
         <img src="https://i.pravatar.cc/40?img=1" alt="Server Icon" class="w-8 h-8 rounded-full" />
         <span class="text-white font-semibold truncate">Home Name</span>
         <svg class="w-4 h-4 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </div>
+
 
       <!-- Guild channels -->
       <h2 class="text-white text-sm mb-2 ml-2 font-bold flex justify-between items-center" onclick="openNewChannelModal()">
@@ -73,7 +76,7 @@
       </h2>
 
       <ul class="space-y-1">
-        <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
           # general
           <!-- Hover settings icon -->
           <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
@@ -85,7 +88,7 @@
             </button>
           </div>
         </li>
-        <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
           # random
           <!-- Hover settings icon -->
           <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
@@ -96,7 +99,7 @@
             </button>
           </div>
         </li>
-        <li class="relative hover:ml-1 px-2 py-1 rounded group">
+        <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
           # help
           <!-- Hover settings icon -->
           <div class="absolute right-2 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
@@ -146,21 +149,19 @@
 
     <!-- Chat Area -->
     <div class="flex-1 flex flex-col">
-      <!-- Top Bar -->
       <div class="h-12 bg-gray-800 flex items-center px-4 border-b border-gray-700 rounded-b">
         <h3 class="text-white font-semibold"># general</h3>
-        <p class="text-gray-400 text-xs ms-3">Welcome to the general room! Feel free to chat here.</p>
+        <p class="text-gray-400 text-xs ms-3">Welcome to the general room! Feel free...</p>
 
         <div class="ml-auto flex items-center">
-          <input type="text" placeholder="Search..."
-                 class="p-2 bg-gray-700 text-white mt-3 mb-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 sm:w-48">
+          <x-fields.searchbar />
         </div>
       </div>
 
       <!-- Messages -->
       <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-900">
         <!-- Individual message -->
-        <div class="group flex items-start space-x-3 relative hover:ml-1">
+        <div class="group flex items-start space-x-3 relative cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
           <!-- PFP -->
           <img src="https://i.pravatar.cc/40?img=1" alt="User1 PFP"
                class="w-10 h-10 rounded-full object-cover" />
@@ -205,13 +206,13 @@
         </div>
 
         <!-- Individual message -->
-        <div class="group flex items-start space-x-3 relative hover:ml-1">
+        <div class="group flex items-start space-x-3 relative cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
           <!-- PFP -->
           <img src="https://i.pravatar.cc/40?img=3" alt="User1 PFP"
                class="w-10 h-10 rounded-full object-cover" />
 
           <!-- Message content -->
-          <div class="flex-1">
+          <div class="flex-1 ">
             <div class="flex items-center space-x-2">
               <span class="font-bold text-blue-400 hover:underline">User1</span>
               <span class="bg-indigo-600 text-blue-800 text-xs font-medium me-1 px-1 py-0.25 leading-tight rounded-sm dark:bg-blue-900 dark:text-blue-300 text-white">Level 1</span>
@@ -253,7 +254,7 @@
         <input
           type="text"
           placeholder="Message #general"
-          class="w-full bg-gray-700 text-white px-4 py-2 rounded focus:outline-none"
+          class="w-full bg-gray-700 text-white px-4 py-2 rounded  cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded"
         />
         <!-- Send Button -->
         <button
@@ -270,16 +271,16 @@
     </div>
   </div>
 
-  <!-- Create New Channel Modal -->
+  <!-- Create New Room Modal -->
   <div id="createChannelModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center flex">
     <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-4 sm:mx-8 lg:max-w-2xl">
-      <h2 class="text-2xl font-semibold mb-4 text-center text-white">Create a new channel</h2>
+      <h2 class="text-2xl font-semibold mb-4 text-center text-white">Create a new room</h2>
 
       <!-- Modal Form -->
       <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-300">Channel Name</label>
+          <label for="name" class="block text-sm font-medium text-gray-300">Room Name</label>
           <input type="text" id="name" name="name" placeholder="Enter channel name"
                  class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
@@ -292,7 +293,7 @@
 
         <!-- Channel Type Select Dropdown -->
         <div class="mb-4">
-          <label for="channel_type" class="block text-sm font-medium text-gray-300">Channel Type</label>
+          <label for="channel_type" class="block text-sm font-medium text-gray-300">Room Type</label>
           <select id="channel_type" name="channel_type"
                   class="w-full p-3 mt-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="text">Text</option>
@@ -427,6 +428,4 @@
       document.getElementById('createChannelModal').classList.add('hidden');
     }
   </script>
-
-
 @stop

@@ -14,5 +14,7 @@
 
   <body class="bg-gray-900 text-white h-screen overflow-hidden font-sans">
     @yield('content')
+
+
   </body>
 </html>
