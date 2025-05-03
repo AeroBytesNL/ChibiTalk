@@ -45,7 +45,7 @@ class UsersController extends Controller
 
             Mail::to($validated['email'])->send(new EmailConfirmation($validated['email']));
 
-            return redirect('/users/created');
+            return redirect('/new-chibi');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

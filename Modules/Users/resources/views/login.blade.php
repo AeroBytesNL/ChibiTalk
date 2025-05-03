@@ -1,6 +1,6 @@
 @extends('layouts.before_login')
 
-@section('title', 'Create account')
+@section('title', 'Login')
 
 @section('content')
   <div class="flex justify-center items-center min-h-screen">
@@ -13,7 +13,8 @@
       <h4 class="text-2xl font-semibold mb-6 text-center">Login</h4>
 
       <!-- Form Start -->
-      <form action="#" method="POST" class="space-y-4">
+      <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
+        @csrf
         <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium">Email Address</label>
