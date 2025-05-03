@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Users\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailConfirmation;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -37,6 +38,7 @@ class UsersController extends Controller
 
         try {
             User::create([
+                'id'            => Str::uuid(),
                 'name'          => $validated['name'],
                 'username'      => $validated['username'],
                 'email'         => $validated['email'],
