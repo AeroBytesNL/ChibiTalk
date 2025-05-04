@@ -4,10 +4,13 @@ namespace Modules\Homes\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Homes\Models\Channel;
 use Modules\Homes\Models\Home;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Modules\Homes\Models\Message;
+use Modules\Users\Models\User;
 
 class HomesController extends Controller
 {
@@ -33,7 +36,7 @@ class HomesController extends Controller
         try {
             $homeId = Str::uuid();
 
-            $home = Home::create([
+            Home::create([
                 'id'          => $homeId,
                 'name'        => $validated['name'],
                 'description' => $validated['description'],
@@ -49,16 +52,32 @@ class HomesController extends Controller
                 'joined_at'   => now(),
             ]);
 
-            // change to home show
-            return redirect(route('dashboard.index'))->with('success', 'Home created!');
+            return redirect(route('homes.show', $homeId))->with('success', 'Home created!');
         } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'Something went wrong! ' . $e->getMessage());
+            return back()->withInput()->with('error', 'Something went wrong!');
         }
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        return view('homes::show');
+        $channelName = $request->query('channel', null);
+
+        if (!$channelName) {
+            $channel = Channel::first();
+        } else {
+            $channel = Channel::where('name', $channelName)->first();
+        }
+
+        $messages = Message::where('channel_id', $channel->id)->get();
+
+        return view('homes::show', [
+            'messages' => $messages,
+            'current_channel' => $channel,
+            'home' => Home::with('owner', 'users', 'channels')->findOrFail($id),
+            'user' => User::with('homes')
+                ->where('id', Auth::id())
+                ->first(),
+        ]);
     }
 
     public function edit($id)
