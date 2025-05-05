@@ -17,6 +17,10 @@ window.Echo = new Echo({
 
 window.Echo.connector.pusher.connection.bind('connected', function() {
     console.log('WebSocket connection established.');
+
+    // Log the WebSocket connection URL
+    const connectionUrl = window.Echo.connector.pusher.connection.url;
+    console.log('Connected to WebSocket URL: ', connectionUrl);
 });
 
 window.Echo.connector.pusher.connection.bind('disconnected', function() {
