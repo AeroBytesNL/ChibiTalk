@@ -140,7 +140,7 @@
     <div class="flex-1">
       <div class="h-12 bg-gray-800 flex items-center px-4 border-b border-gray-700 rounded-b">
         <h3 class="text-white font-semibold"># {{ ($current_channel->name ?? '') }}</h3>
-        <p class="text-gray-400 text-xs ms-3">{{ Str::words($current_channel->description, 6, '...')}}</p>
+        <p class="text-gray-400 text-xs ms-3">{{ Str::words(($current_channel->description ?? ''), 6, '...')}}</p>
 
         <div class="ml-auto flex items-center">
           <x-fields.searchbar />
