@@ -12,6 +12,7 @@ window.Echo = new Echo({
     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
     forceTLS: false,//(import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
     enabledTransports: ['ws'], // TODO: move to secure websocket (WSS)
+    encrypted: false,
     debug: true,
 });
 

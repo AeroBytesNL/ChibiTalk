@@ -9,5 +9,5 @@ php artisan migrate --force
 
 npm run build
 
-php artisan reverb:start &
+php artisan reverb:start
 
