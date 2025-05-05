@@ -1,6 +1,6 @@
 @extends('layouts.after_login')
 
-@section('title', $home->name . ' # ' . $current_channel->name ?? '')
+@section('title', $home->name . ' # ' . ($current_channel->name ?? ''))
 
 @section('content')
   <div class="flex h-full">
