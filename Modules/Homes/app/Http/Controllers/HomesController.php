@@ -35,6 +35,7 @@ class HomesController extends Controller
 
         try {
             $homeId = Str::uuid();
+            $defaultChannelId = Str::uuid();
 
             Home::create([
                 'id'          => $homeId,
@@ -50,6 +51,17 @@ class HomesController extends Controller
                 'user_id'     => Auth::id(),
                 'nickname'    => null,
                 'joined_at'   => now(),
+            ]);
+
+            DB::table('channels')->insert([
+                'id'          => $defaultChannelId,
+                'name'        => 'General',
+                'description' => 'The default general room',
+                'type'        => 1,
+                'is_public'   => 1,
+                'home_id'     => $homeId,
+                'channel_id'  => $defaultChannelId,
+                'created_at'  => now(),
             ]);
 
             return redirect(route('homes.show', $homeId))->with('success', 'Home created!');
