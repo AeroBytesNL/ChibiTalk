@@ -7,7 +7,7 @@ RUN apk add --no-cache \
     libjpeg-turbo-dev \
     libwebp-dev \
     libxml2-dev \
-    libssl1.1 \
+    openssl \
     zlib-dev \
     icu-dev \
     oniguruma-dev \
