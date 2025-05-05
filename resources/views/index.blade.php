@@ -23,7 +23,7 @@
       </div>
 
       <div class="flex-1 p-10 overflow-y-auto">
-        <h1 class="text-3xl font-bold mb-6">Dis1cover ChibiTalk</h1>
+        <h1 class="text-3xl font-bold mb-6">Discover ChibiTalk</h1>
         <p class="text-lg mb-8">The ultimate chat platform for gamers, creators, and communities. Get started now and take your communication to the next level!</p>
 
         <div id="features" class="mb-12">
@@ -69,13 +69,15 @@
 
         <div id="sign-up" class="text-center">
           <h2 class="text-3xl font-semibold mb-4">Ready to Get Started?</h2>
-          <p class="text-lg mb-6">Join us and enjoy the ChibiTalk experience. Sign up now and start connecting!</p>
+          <p class="text-lg mb-6">Join us and enjoy the ChibiTalk experience. Sign up/log in now and start connecting!</p>
           <a href="{{ route('users.create') }}" class="px-6 py-3 bg-indigo-600 rounded hover:bg-indigo-500 transition font-semibold">
             Sign Up Now
+          </a>
+          <a href="{{ route('login') }}" class="px-6 py-3 ml-2 bg-indigo-600 rounded hover:bg-indigo-500 transition font-semibold">
+            Login
           </a>
         </div>
       </div>
     </div>
-
   </body>
 </html>
