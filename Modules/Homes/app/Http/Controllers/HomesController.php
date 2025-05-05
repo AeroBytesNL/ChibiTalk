@@ -68,7 +68,9 @@ class HomesController extends Controller
             $channel = Channel::where('name', $channelName)->first();
         }
 
-        $messages = Message::where('channel_id', $channel->id)->get();
+        $messages = $channel
+            ? Message::where('channel_id', $channel->id)->get()
+            : collect();
 
         return view('homes::show', [
             'messages' => $messages,

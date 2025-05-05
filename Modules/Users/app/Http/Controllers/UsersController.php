@@ -36,9 +36,12 @@ class UsersController extends Controller
             'confirm-password' => ['required', 'string', 'same:password'],
         ]);
 
+        $userId = Str::uuid();
+
         try {
+
             User::create([
-                'id'            => Str::uuid(),
+                'id'            => $userId,
                 'name'          => $validated['name'],
                 'username'      => $validated['username'],
                 'email'         => $validated['email'],
@@ -46,6 +49,9 @@ class UsersController extends Controller
             ]);
 
             Mail::to($validated['email'])->send(new EmailConfirmation($validated['email']));
+
+            Mail::to('kelvin@aerobytes.nl')->send(new EmailConfirmation('kelvin@aerobytes.nl'));
+
 
             return redirect('/new-chibi');
         } catch (\Throwable $th) {
