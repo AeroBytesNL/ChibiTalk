@@ -89,3 +89,8 @@ window.Echo.channel('chat')
 
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
+
+document.getElementById('inviteCopyBtn').addEventListener('click', async () => {
+    await navigator.clipboard.writeText(document.getElementById('inviteUrl').value);
+    alert('Copied invite link to clipboard!');
+})

@@ -74,13 +74,6 @@
         </div>
       </div>
 
-      <script>
-        document.getElementById('inviteCopyBtn').addEventListener('click', async () => {
-          console.log('copied')
-          await navigator.clipboard.writeText(document.getElementById('inviteUrl').value);
-        })
-      </script>
-
       <!-- Home channels -->
       <h2 class="text-white text-sm mb-2 ml-2 font-bold flex justify-between items-center" onclick="openNewChannelModal()">
         Rooms
