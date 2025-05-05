@@ -30,7 +30,6 @@ class ChatRoom extends Component
             ->get()
             ->reverse();
 
-        $this->homeId = request()->query('homeId');
         $this->channelId = $channel->id;
     }
 
