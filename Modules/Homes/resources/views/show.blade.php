@@ -1,6 +1,6 @@
 @extends('layouts.after_login')
 
-@section('title', $home->name . ' # ' . $current_channel->name)
+@section('title', $home->name . ' # ' . $current_channel->name ?? '')
 
 @section('content')
   <div class="flex h-full">
@@ -59,7 +59,7 @@
           class="flex items-center gap-3 mb-4 p-2 rounded cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600"
           tabindex="0"
         >
-          <h2 class="text-shadow-md font-bold">{{ $home->name }}</h2>
+          <h2 class="text-shadow-md font-bold">{{ $home->name ?? ''}}</h2>
           <span class="text-white font-semibold truncate"></span>
           <svg class="w-5 h-5 transform transition-transform duration-300 hover:scale-110 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
