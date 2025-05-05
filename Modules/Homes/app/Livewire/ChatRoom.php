@@ -38,7 +38,6 @@ class ChatRoom extends Component
     {
         $messageId = Str::uuid();
 
-        // Create the new message
         $message = Message::create([
             'id'         => $messageId,
             'home_id'    => $this->homeId,
@@ -48,21 +47,14 @@ class ChatRoom extends Component
             'created_at' => now(),
         ]);
 
-        // Load user data with the message
         $message->load('user');
 
-        // Broadcast the new message to others
         broadcast(new MessageCreateEvent($message))->toOthers();
 
-        // Append the new message to the messages array
         $this->messages->push($message);
 
-        // Clear the input field
         $this->message = '';
     }
-
-
-
 
     public function render()
     {

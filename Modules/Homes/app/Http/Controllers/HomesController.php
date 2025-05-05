@@ -70,7 +70,7 @@ class HomesController extends Controller
         }
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $homeId)
     {
         $channelName = $request->query('channel', null);
 
@@ -87,7 +87,7 @@ class HomesController extends Controller
         return view('homes::show', [
             'messages' => $messages,
             'current_channel' => $channel,
-            'home' => Home::with('owner', 'users', 'channels')->findOrFail($id),
+            'home' => Home::with('owner', 'users', 'channels')->findOrFail($homeId),
             'user' => User::with('homes')
                 ->where('id', Auth::id())
                 ->first(),
