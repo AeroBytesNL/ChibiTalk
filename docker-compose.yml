@@ -12,12 +12,12 @@ services:
             - app_network
         environment:
             - APP_ENV=production
-            - APP_KEY=base64:your-app-key-here
-            - DB_HOST=db
+            - APP_KEY=
+            - DB_HOST=
             - DB_PORT=3306
-            - DB_DATABASE=your-database
-            - DB_USERNAME=your-db-username
-            - DB_PASSWORD=your-db-password
+            - DB_DATABASE=
+            - DB_USERNAME=
+            - DB_PASSWORD=
 
     nginx:
         image: nginx:alpine
