@@ -64,14 +64,22 @@
           <svg class="w-5 h-5 transform transition-transform duration-300 hover:scale-110 text-gray-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
-
-          <a>
-            <svg class="w-5 h-5 transform transition-transform duration-300 hover:scale-110" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <!-- Invite -->
+          <button class="transform transition-transform duration-300 hover:scale-110" id="inviteCopyBtn">
+            <svg class="w-5 h-5 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
             </svg>
-          </a>
+            <input type="hidden" id="inviteUrl" value="{{ URL('/invite/' . $home->id) }}">
+          </button>
         </div>
       </div>
+
+      <script>
+        document.getElementById('inviteCopyBtn').addEventListener('click', async () => {
+          console.log('copied')
+          await navigator.clipboard.writeText(document.getElementById('inviteUrl').value);
+        })
+      </script>
 
       <!-- Home channels -->
       <h2 class="text-white text-sm mb-2 ml-2 font-bold flex justify-between items-center" onclick="openNewChannelModal()">
