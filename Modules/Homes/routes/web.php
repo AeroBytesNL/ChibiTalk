@@ -10,3 +10,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/channels/create', [ChannelsController::class, 'store'])->name('channels.store');
     Route::resource('messages', MessagesController::class)->names('messages');
 });
+
+Route::get('/invite/{homeId}', [HomesController::class, 'invite'])->name('homes.invite');
+Route::post('/invite/{homeId}', [HomesController::class, 'invitePost'])->name('homes.invitePost');

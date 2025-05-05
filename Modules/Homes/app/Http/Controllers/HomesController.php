@@ -80,6 +80,39 @@ class HomesController extends Controller
         ]);
     }
 
+    public function invite(Request $request, $homeId)
+    {
+        $home = Home::with('owner', 'users', 'channels')->findOrFail($homeId);
+
+        return view('homes::invite', [
+            'homeName' => $home->name,
+            'homeUrl'  =>  url('/invite/' . $homeId),
+        ]);
+    }
+
+    public function invitePost(Request $request, $homeId)
+    {
+        $home = Home::with('owner', 'users', 'channels')->findOrFail($homeId);
+
+        $alreadyJoined = DB::table('homes_users')
+            ->where('home_id', $homeId)
+            ->where('user_id', Auth::id())
+            ->exists();
+
+        if (!$alreadyJoined) {
+            DB::table('homes_users')->insert([
+                'home_id'     => $homeId,
+                'user_id'     => Auth::id(),
+                'nickname'    => null,
+                'joined_at'   => now(),
+            ]);
+
+            return redirect(route('homes.show', $homeId))->with('success', 'Home joined!');
+        }
+
+        return redirect(route('homes.show', $homeId))->with('error', 'Home already joined!');
+    }
+
     public function edit($id)
     {
         return view('homes::edit');
