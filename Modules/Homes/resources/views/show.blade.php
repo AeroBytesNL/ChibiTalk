@@ -11,15 +11,19 @@
       </div>
 
       <!-- Find Homes -->
+      <a href="{{ route('homes.index') }}">
+
       <div class="relative group w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+
         <!-- Hover Label -->
         <div class="absolute left-full top-9/12 -translate-y-1/2 ml-2 px-2 py-1 text-sm bg-gray-800 text-white rounded hidden group-hover:block whitespace-nowrap z-10 shadow-lg">
           Find new homes
         </div>
       </div>
+      </a>
 
       <!-- Create Home -->
       <div class="relative group w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer" onclick="openModal()">
@@ -90,7 +94,10 @@
             @endif
               # {{ $channel->name }}
               <div class="absolute right-2 top-14/15 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
-                <button title="Settings" class="transform transition-transform duration-300 hover:scale-110">
+                <button
+                  title="Settings"
+                  class="transform transition-transform duration-300 hover:scale-110"
+                  onclick="openModal('{{ $channel->name }}')">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                     <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
                   </svg>

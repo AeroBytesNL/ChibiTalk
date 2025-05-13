@@ -16,7 +16,12 @@ class HomesController extends Controller
 {
     public function index()
     {
-        return view('homes::index');
+        return view('homes::index', [
+            'homes' => Home::where('is_public', 1)->get(),
+            'user'  => User::with('homes')
+                ->where('id', Auth::id())
+                ->first(),
+        ]);
     }
 
     public function create()
