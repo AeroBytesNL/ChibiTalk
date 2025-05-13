@@ -79,25 +79,27 @@
         <span class="text-white text-lg cursor-pointer transform transition-transform duration-300 hover:scale-110">+</span>
       </h2>
 
-      @foreach($home->channels as $channel)
-        <a href="?channel={{ $channel->name }}">
-          @if($current_channel->name == $channel->name)
-            <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none ring-2 ring-indigo-600 outline-none ring-2 ring-indigo-600 p-1 rounded">
-          @else
-            <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
-          @endif
-            # {{ $channel->name }}
-            <div class="absolute right-2 top-14/15 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
-              <button title="Settings" class="transform transition-transform duration-300 hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
-                  <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
-                </svg>
-              </button>
-            </div>
-          </li>
-        </a>
-      @endforeach
-
+      <!-- Channel loop -->
+      <ul class="space-y-1">
+        @foreach($home->channels as $channel)
+          <a href="?channel={{ $channel->name }}">
+            @if($current_channel->name == $channel->name)
+              <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none ring-2 ring-indigo-600 outline-none ring-2 ring-indigo-600 p-1 rounded">
+            @else
+              <li class="relative px-2 py-1 group cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded">
+            @endif
+              # {{ $channel->name }}
+              <div class="absolute right-2 top-14/15 transform -translate-y-1/2 opacity-0 group-hover:opacity-100">
+                <button title="Settings" class="transform transition-transform duration-300 hover:scale-110">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                    <path d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </a>
+        @endforeach
+      </ul>
 
       <ul class="space-y-1">
 
@@ -254,6 +256,8 @@
     </div>
   </div>
 
+  <input type="hidden" id="invite_url" value="{{ url('/invite/' . $home->id) }}">
+
   <script>
     function toggleSwitch() {
       const checkbox = document.getElementById('is_public');
@@ -299,7 +303,36 @@
       document.getElementById('createHomeModal').classList.add('hidden');
       document.getElementById('createChannelModal').classList.add('hidden');
     }
+
+    document.getElementById('inviteCopyBtn').addEventListener('click', function () {
+      navigator.clipboard.writeText(document.getElementById('invite_url').value);
+
+      const notification = document.getElementById('noti-invite');
+      // Show notification
+      notification.classList.remove('hidden');
+
+      // Hide after 5 seconds
+      setTimeout(() => {
+        notification.classList.add('hidden');
+      }, 5000);
+    });
     </script>
+
+    <div class="fixed bottom-4 right-4 z-50 hidden" id="noti-invite">
+      <div class="flex items-center justify-between px-4 py-3 rounded bg-gray-800 border border-gray-700 text-white shadow-lg w-80">
+        <div class="flex items-center space-x-3">
+          <svg class="w-15 h-15 text-green-600 size-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+          <span class="text-sm">Invite has been copied to your clipboard!</span>
+        </div>
+        <button onclick="this.closest('.flex').classList.add('hidden')" class="text-gray-400 hover:text-white focus:outline-none">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
 
   <input type="hidden" id="channel_id" name="channel_id" value="{{ $channel_id }}">
   <input type="hidden" id="current_user_id" name="current_user_id" value="{{ Auth::id() }}">
