@@ -308,10 +308,8 @@
       navigator.clipboard.writeText(document.getElementById('invite_url').value);
 
       const notification = document.getElementById('noti-invite');
-      // Show notification
       notification.classList.remove('hidden');
 
-      // Hide after 5 seconds
       setTimeout(() => {
         notification.classList.add('hidden');
       }, 5000);
