@@ -58,13 +58,17 @@
     @endforeach
   </div>
 
+  @php
+    $channelName = request()->get('channel');
+  @endphp
+
   <!-- Fixed input form -->
   <div class="fixed bottom-0  right-0 z-50 w-6/7  p-4">
     <form wire:submit.prevent="sendMessage">
       <div class="h-16 flex items-center px-4 rounded-xl">
         <input
           type="text"
-          placeholder="Message #general"
+          placeholder="Send message to # @if ($channelName){{ $channelName }}@endif"
           wire:model="message"
           class="w-full bg-gray-800 text-white px-4 py-2 rounded cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded"
         />
