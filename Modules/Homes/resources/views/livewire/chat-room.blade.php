@@ -16,7 +16,13 @@
         <div class="flex-1">
           <div class="flex items-center space-x-2">
             <!-- User name -->
-            <span class="font-bold text-blue-400 hover:underline">{{ $message->user->username }}</span>
+            <span class="font-bold text-blue-400 hover:underline">
+              @if ($message->user_id === Auth::id())
+                {{ Auth::user()->username }}
+              @else
+                {{ $message->user->username }}
+              @endif
+            </span>
             <span class="text-xs text-gray-500">{{ \Carbon\Carbon::parse($message->created_at)->format('d-m-Y | H:i:s') }}</span>
           </div>
           <!-- Message -->
@@ -63,15 +69,16 @@
           class="w-full bg-gray-800 text-white px-4 py-2 rounded cursor-pointer transition-colors duration-200 hover:outline-none hover:ring-2 hover:ring-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600 p-1 rounded"
         />
 
-        <script>
-          window.onload = function() {
-            const urlSegments = window.location.pathname.split('/');
-            const homeId = urlSegments[urlSegments.length - 1];
-            document.getElementById('homeId').value = homeId;
-          }
-        </script>
-
         <input type="hidden" wire:model="homeId" id="homeId" value="" />
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const match = window.location.pathname.match(/\/homes\/([^\/\?]+)/);
+            if (match && match[1]) {
+              document.getElementById('homeId').value = match[1];
+            @this.set('homeId', match[1]);
+            }
+          });
+        </script>
         <input type="hidden" wire:model="channelId" value="{{ $channelId }}" />
 
         <button
@@ -85,6 +92,35 @@
         </button>
       </div>
     </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const match = window.location.pathname.match(/\/homes\/([^\/\?]+)/);
+        if (match && match[1]) {
+          const homeId = match[1];
+          document.getElementById('homeId').value = homeId;
+          Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('homeId', homeId);
+        }
+
+        const input = document.querySelector('input[wire\\:model="message"]');
+        if (input) input.focus();
+
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).call('sendMessage');
+          }
+        });
+
+        const scrollContainer = document.querySelector('.messages');
+        if (scrollContainer) {
+          const observer = new MutationObserver(() => {
+            scrollContainer.scrollTop = scrollContainer.scrollHeight;
+          });
+          observer.observe(scrollContainer, { childList: true, subtree: true });
+        }
+      });
+    </script>
 
   </div>
 </div>

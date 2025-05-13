@@ -21,6 +21,10 @@ class ChatRoom extends Component
 
     public function mount()
     {
+        $urlPath = request()->path(); // e.g. "homes/5722394a-aaae-4379-9f21-2f94535a7104"
+        preg_match('/homes\/([^\/\?]+)/', $urlPath, $matches);
+        $this->homeId = $matches[1] ?? null;
+
         $channel = Channel::where('name', request()->query('channel'))->first() ?? Channel::first();
 
         $this->messages = Message::with('user')
@@ -35,6 +39,8 @@ class ChatRoom extends Component
 
     public function sendMessage(): void
     {
+        if (trim($this->message) === '') return;
+
         $messageId = Str::uuid();
 
         $message = [
