@@ -3,12 +3,12 @@
 namespace Modules\Homes\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Modules\Homes\Models\Message;
 use Illuminate\Support\Str;
 use Modules\Homes\Models\Channel;
-use App\Events\MessageCreateEvent;
-use Modules\Users\Models\User;
+use App\Events\MessageSent;
 
 class ChatRoom extends Component
 {
@@ -37,20 +37,22 @@ class ChatRoom extends Component
     {
         $messageId = Str::uuid();
 
-        $message = Message::create([
+        $message = [
             'id'         => $messageId,
             'home_id'    => $this->homeId,
             'channel_id' => $this->channelId,
             'user_id'    => Auth::id(),
             'content'    => $this->message,
             'created_at' => now(),
-        ]);
+        ];
 
-        $message->load('user');
+        $messageDb = Message::create($message);
 
-        broadcast(new MessageCreateEvent($message))->toOthers();
+        $messageDb->load('user');
 
-        $this->messages->push($message);
+        event(new MessageSent($message));
+        Log::info('MessageSent event fired', $message);
+        $this->messages->push($messageDb);
 
         $this->message = '';
     }

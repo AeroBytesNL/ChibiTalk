@@ -85,10 +85,11 @@ class HomesController extends Controller
             : collect();
 
         return view('homes::show', [
-            'messages' => $messages,
+            'messages'        => $messages,
+            'channel_id'      => $channel->id,
             'current_channel' => $channel,
-            'home' => Home::with('owner', 'users', 'channels')->findOrFail($homeId),
-            'user' => User::with('homes')
+            'home'            => Home::with('owner', 'users', 'channels')->findOrFail($homeId),
+            'user'            => User::with('homes')
                 ->where('id', Auth::id())
                 ->first(),
         ]);
