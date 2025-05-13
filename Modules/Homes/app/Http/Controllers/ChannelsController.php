@@ -42,7 +42,10 @@ class ChannelsController extends Controller
                 'channel_id'  => $channelId,
             ]);
 
-            return redirect()->route('homes.show', $validated['home_id'])->with('success', 'Channel created.');
+            return redirect()->route('homes.show', [
+                'home' => $validated['home_id'],
+                'channel' => $validated['name'],
+            ])->with('success', 'Channel created.');
         } catch(\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

@@ -84,11 +84,12 @@ class HomesController extends Controller
             ? Message::where('channel_id', $channel->id)->get()
             : collect();
 
+
         return view('homes::show', [
             'messages'        => $messages,
             'channel_id'      => $channel->id,
             'current_channel' => $channel,
-            'home'            => Home::with('owner', 'users', 'channels')->findOrFail($homeId),
+            'home'            => Home::with('owner', 'users', 'channels')->find($homeId),
             'user'            => User::with('homes')
                 ->where('id', Auth::id())
                 ->first(),

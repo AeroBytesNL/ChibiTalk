@@ -34,22 +34,21 @@
       </div>
 
       <!-- User Servers -->
-      @foreach($user->homes as $home)
+      @foreach($user->homes as $serverListhome)
         <div class="relative group w-12 h-12">
-          <a href="{{ route('homes.show', $home->id) }}" class="w-full h-full bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer">
-            @if (!$home->icon_url)
-              <span class="text-white font-bold">{{ substr($home->name, 0, 1) }}</span>
+          <a href="{{ route('homes.show', $serverListhome->id) }}" class="w-full h-full bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer">
+            @if (!$serverListhome->icon_url)
+              <span class="text-white font-bold">{{ substr($serverListhome->name, 0, 1) }}</span>
             @else
-              <img src="{{ $home->icon_url }}" alt="{{ $home->name }}" class="w-full h-full object-cover rounded-full" />
+              <img src="{{ $serverListhome->icon_url }}" alt="{{ $serverListhome->name }}" class="w-full h-full object-cover rounded-full" />
             @endif
           </a>
           <!-- Hover Label -->
           <div class="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 text-sm bg-gray-800 text-white rounded hidden group-hover:block whitespace-nowrap z-10 shadow-lg">
-            {{ $home->name }}
+            {{ $serverListhome->name }}
           </div>
         </div>
       @endforeach
-
     </div>
 
     <!-- Channel List -->
