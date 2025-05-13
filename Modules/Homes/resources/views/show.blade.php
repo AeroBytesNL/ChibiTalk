@@ -300,10 +300,10 @@
       document.getElementById('createHomeModal').classList.add('hidden');
       document.getElementById('createChannelModal').classList.add('hidden');
     }
+    </script>
 
-    let currentUserId = @json(Auth::id())
-    let channelId = @json($channel_id)
-  </script>
+  <input type="hidden" id="channel_id" name="channel_id" value="{{ $channel_id }}">
+  <input type="hidden" id="current_user_id" name="current_user_id" value="{{ Auth::id() }}">
 
   @vite(['Modules/Homes/resources/assets/js/app.js'])
 @stop

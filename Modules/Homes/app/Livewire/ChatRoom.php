@@ -48,10 +48,10 @@ class ChatRoom extends Component
 
         $messageDb = Message::create($message);
 
-        $messageDb->load('user');
+        $messageDb->load(['user:id,name,profile_image_url']);
 
-        event(new MessageSent($message));
-        Log::info('MessageSent event fired', $message);
+        event(new MessageSent($messageDb));
+
         $this->messages->push($messageDb);
 
         $this->message = '';

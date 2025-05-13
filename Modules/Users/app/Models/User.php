@@ -17,6 +17,13 @@ class User extends Authenticatable
     public $incrementing = false;
     protected $primaryKey = 'id';
 
+    protected $visible = [
+        'id',
+        'name',
+        'username',
+        'profile_image_url',
+    ];
+
     protected $fillable = [
         'id',
         'name',
