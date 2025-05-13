@@ -93,34 +93,5 @@
       </div>
     </form>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const match = window.location.pathname.match(/\/homes\/([^\/\?]+)/);
-        if (match && match[1]) {
-          const homeId = match[1];
-          document.getElementById('homeId').value = homeId;
-          Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('homeId', homeId);
-        }
-
-        const input = document.querySelector('input[wire\\:model="message"]');
-        if (input) input.focus();
-
-        input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).call('sendMessage');
-          }
-        });
-
-        const scrollContainer = document.querySelector('.messages');
-        if (scrollContainer) {
-          const observer = new MutationObserver(() => {
-            scrollContainer.scrollTop = scrollContainer.scrollHeight;
-          });
-          observer.observe(scrollContainer, { childList: true, subtree: true });
-        }
-      });
-    </script>
-
   </div>
 </div>
